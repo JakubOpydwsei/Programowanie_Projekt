@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Projekt_POModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Klienci">
+          <Key>
+            <PropertyRef Name="klient_id" />
+          </Key>
+          <Property Name="klient_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="naziwsko" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefon" Type="int" Nullable="false" />
+          <Property Name="kod_pocztowy" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="adres" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stan_Platnosci">
+          <Key>
+            <PropertyRef Name="stan_platnosci" />
+          </Key>
+          <Property Name="stan_platnosci" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stan_Pracy">
+          <Key>
+            <PropertyRef Name="stan_pracy" />
+          </Key>
+          <Property Name="stan_pracy" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zamowienie">
+          <Key>
+            <PropertyRef Name="zamowienie_id" />
+          </Key>
+          <Property Name="zamowienie_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notatka" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Zamowienie_Klienci">
+          <Key>
+            <PropertyRef Name="zamowienie_klient_id" />
+          </Key>
+          <Property Name="zamowienie_klient_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="klient_id" Type="int" Nullable="false" />
+          <Property Name="zamowienie_id" Type="int" Nullable="false" />
+          <Property Name="stan_pracy" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="stan_platnosci" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Zamowienie_Klienci_Klienci">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="Zamowienie_Klienci" Type="Self.Zamowienie_Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="klient_id" />
+            </Principal>
+            <Dependent Role="Zamowienie_Klienci">
+              <PropertyRef Name="klient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zamowienie_Klienci_Stan_Platnosci">
+          <End Role="Stan_Platnosci" Type="Self.Stan_Platnosci" Multiplicity="1" />
+          <End Role="Zamowienie_Klienci" Type="Self.Zamowienie_Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stan_Platnosci">
+              <PropertyRef Name="stan_platnosci" />
+            </Principal>
+            <Dependent Role="Zamowienie_Klienci">
+              <PropertyRef Name="stan_platnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zamowienie_Klienci_Stan_Pracy">
+          <End Role="Stan_Pracy" Type="Self.Stan_Pracy" Multiplicity="1" />
+          <End Role="Zamowienie_Klienci" Type="Self.Zamowienie_Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stan_Pracy">
+              <PropertyRef Name="stan_pracy" />
+            </Principal>
+            <Dependent Role="Zamowienie_Klienci">
+              <PropertyRef Name="stan_pracy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zamowienie_Klienci_Zamowienie">
+          <End Role="Zamowienie" Type="Self.Zamowienie" Multiplicity="1" />
+          <End Role="Zamowienie_Klienci" Type="Self.Zamowienie_Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zamowienie">
+              <PropertyRef Name="zamowienie_id" />
+            </Principal>
+            <Dependent Role="Zamowienie_Klienci">
+              <PropertyRef Name="zamowienie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Projekt_POModelStoreContainer">
+          <EntitySet Name="Klienci" EntityType="Self.Klienci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stan_Platnosci" EntityType="Self.Stan_Platnosci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stan_Pracy" EntityType="Self.Stan_Pracy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zamowienie" EntityType="Self.Zamowienie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zamowienie_Klienci" EntityType="Self.Zamowienie_Klienci" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Zamowienie_Klienci_Klienci" Association="Self.FK_Zamowienie_Klienci_Klienci">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Zamowienie_Klienci" EntitySet="Zamowienie_Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zamowienie_Klienci_Stan_Platnosci" Association="Self.FK_Zamowienie_Klienci_Stan_Platnosci">
+            <End Role="Stan_Platnosci" EntitySet="Stan_Platnosci" />
+            <End Role="Zamowienie_Klienci" EntitySet="Zamowienie_Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zamowienie_Klienci_Stan_Pracy" Association="Self.FK_Zamowienie_Klienci_Stan_Pracy">
+            <End Role="Stan_Pracy" EntitySet="Stan_Pracy" />
+            <End Role="Zamowienie_Klienci" EntitySet="Zamowienie_Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zamowienie_Klienci_Zamowienie" Association="Self.FK_Zamowienie_Klienci_Zamowienie">
+            <End Role="Zamowienie" EntitySet="Zamowienie" />
+            <End Role="Zamowienie_Klienci" EntitySet="Zamowienie_Klienci" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Projekt_POModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Klienci">
+          <Key>
+            <PropertyRef Name="klient_id" />
+          </Key>
+          <Property Name="klient_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="naziwsko" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="telefon" Type="Int32" Nullable="false" />
+          <Property Name="kod_pocztowy" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="adres" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zamowienie_Klienci" Relationship="Self.FK_Zamowienie_Klienci_Klienci" FromRole="Klienci" ToRole="Zamowienie_Klienci" />
+        </EntityType>
+        <EntityType Name="Stan_Platnosci">
+          <Key>
+            <PropertyRef Name="stan_platnosci1" />
+          </Key>
+          <Property Name="stan_platnosci1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zamowienie_Klienci" Relationship="Self.FK_Zamowienie_Klienci_Stan_Platnosci" FromRole="Stan_Platnosci" ToRole="Zamowienie_Klienci" />
+        </EntityType>
+        <EntityType Name="Stan_Pracy">
+          <Key>
+            <PropertyRef Name="stan_pracy1" />
+          </Key>
+          <Property Name="stan_pracy1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zamowienie_Klienci" Relationship="Self.FK_Zamowienie_Klienci_Stan_Pracy" FromRole="Stan_Pracy" ToRole="Zamowienie_Klienci" />
+        </EntityType>
+        <EntityType Name="Zamowienie">
+          <Key>
+            <PropertyRef Name="zamowienie_id" />
+          </Key>
+          <Property Name="zamowienie_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="notatka" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Zamowienie_Klienci" Relationship="Self.FK_Zamowienie_Klienci_Zamowienie" FromRole="Zamowienie" ToRole="Zamowienie_Klienci" />
+        </EntityType>
+        <EntityType Name="Zamowienie_Klienci">
+          <Key>
+            <PropertyRef Name="zamowienie_klient_id" />
+          </Key>
+          <Property Name="zamowienie_klient_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="klient_id" Type="Int32" Nullable="false" />
+          <Property Name="zamowienie_id" Type="Int32" Nullable="false" />
+          <Property Name="stan_pracy" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="stan_platnosci" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Klienci" Relationship="Self.FK_Zamowienie_Klienci_Klienci" FromRole="Zamowienie_Klienci" ToRole="Klienci" />
+          <NavigationProperty Name="Stan_Platnosci1" Relationship="Self.FK_Zamowienie_Klienci_Stan_Platnosci" FromRole="Zamowienie_Klienci" ToRole="Stan_Platnosci" />
+          <NavigationProperty Name="Stan_Pracy1" Relationship="Self.FK_Zamowienie_Klienci_Stan_Pracy" FromRole="Zamowienie_Klienci" ToRole="Stan_Pracy" />
+          <NavigationProperty Name="Zamowienie" Relationship="Self.FK_Zamowienie_Klienci_Zamowienie" FromRole="Zamowienie_Klienci" ToRole="Zamowienie" />
+        </EntityType>
+        <Association Name="FK_Zamowienie_Klienci_Klienci">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="Zamowienie_Klienci" Type="Self.Zamowienie_Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="klient_id" />
+            </Principal>
+            <Dependent Role="Zamowienie_Klienci">
+              <PropertyRef Name="klient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zamowienie_Klienci_Stan_Platnosci">
+          <End Role="Stan_Platnosci" Type="Self.Stan_Platnosci" Multiplicity="1" />
+          <End Role="Zamowienie_Klienci" Type="Self.Zamowienie_Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stan_Platnosci">
+              <PropertyRef Name="stan_platnosci1" />
+            </Principal>
+            <Dependent Role="Zamowienie_Klienci">
+              <PropertyRef Name="stan_platnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zamowienie_Klienci_Stan_Pracy">
+          <End Role="Stan_Pracy" Type="Self.Stan_Pracy" Multiplicity="1" />
+          <End Role="Zamowienie_Klienci" Type="Self.Zamowienie_Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stan_Pracy">
+              <PropertyRef Name="stan_pracy1" />
+            </Principal>
+            <Dependent Role="Zamowienie_Klienci">
+              <PropertyRef Name="stan_pracy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zamowienie_Klienci_Zamowienie">
+          <End Role="Zamowienie" Type="Self.Zamowienie" Multiplicity="1" />
+          <End Role="Zamowienie_Klienci" Type="Self.Zamowienie_Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zamowienie">
+              <PropertyRef Name="zamowienie_id" />
+            </Principal>
+            <Dependent Role="Zamowienie_Klienci">
+              <PropertyRef Name="zamowienie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Projekt_POEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kliencis" EntityType="Self.Klienci" />
+          <EntitySet Name="Stan_Platnosci" EntityType="Self.Stan_Platnosci" />
+          <EntitySet Name="Stan_Pracy" EntityType="Self.Stan_Pracy" />
+          <EntitySet Name="Zamowienies" EntityType="Self.Zamowienie" />
+          <EntitySet Name="Zamowienie_Klienci" EntityType="Self.Zamowienie_Klienci" />
+          <AssociationSet Name="FK_Zamowienie_Klienci_Klienci" Association="Self.FK_Zamowienie_Klienci_Klienci">
+            <End Role="Klienci" EntitySet="Kliencis" />
+            <End Role="Zamowienie_Klienci" EntitySet="Zamowienie_Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zamowienie_Klienci_Stan_Platnosci" Association="Self.FK_Zamowienie_Klienci_Stan_Platnosci">
+            <End Role="Stan_Platnosci" EntitySet="Stan_Platnosci" />
+            <End Role="Zamowienie_Klienci" EntitySet="Zamowienie_Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zamowienie_Klienci_Stan_Pracy" Association="Self.FK_Zamowienie_Klienci_Stan_Pracy">
+            <End Role="Stan_Pracy" EntitySet="Stan_Pracy" />
+            <End Role="Zamowienie_Klienci" EntitySet="Zamowienie_Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zamowienie_Klienci_Zamowienie" Association="Self.FK_Zamowienie_Klienci_Zamowienie">
+            <End Role="Zamowienie" EntitySet="Zamowienies" />
+            <End Role="Zamowienie_Klienci" EntitySet="Zamowienie_Klienci" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Projekt_POModelStoreContainer" CdmEntityContainer="Projekt_POEntities">
+          <EntitySetMapping Name="Kliencis">
+            <EntityTypeMapping TypeName="Projekt_POModel.Klienci">
+              <MappingFragment StoreEntitySet="Klienci">
+                <ScalarProperty Name="klient_id" ColumnName="klient_id" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="naziwsko" ColumnName="naziwsko" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="kod_pocztowy" ColumnName="kod_pocztowy" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stan_Platnosci">
+            <EntityTypeMapping TypeName="Projekt_POModel.Stan_Platnosci">
+              <MappingFragment StoreEntitySet="Stan_Platnosci">
+                <ScalarProperty Name="stan_platnosci1" ColumnName="stan_platnosci" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stan_Pracy">
+            <EntityTypeMapping TypeName="Projekt_POModel.Stan_Pracy">
+              <MappingFragment StoreEntitySet="Stan_Pracy">
+                <ScalarProperty Name="stan_pracy1" ColumnName="stan_pracy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zamowienies">
+            <EntityTypeMapping TypeName="Projekt_POModel.Zamowienie">
+              <MappingFragment StoreEntitySet="Zamowienie">
+                <ScalarProperty Name="zamowienie_id" ColumnName="zamowienie_id" />
+                <ScalarProperty Name="notatka" ColumnName="notatka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zamowienie_Klienci">
+            <EntityTypeMapping TypeName="Projekt_POModel.Zamowienie_Klienci">
+              <MappingFragment StoreEntitySet="Zamowienie_Klienci">
+                <ScalarProperty Name="zamowienie_klient_id" ColumnName="zamowienie_klient_id" />
+                <ScalarProperty Name="klient_id" ColumnName="klient_id" />
+                <ScalarProperty Name="zamowienie_id" ColumnName="zamowienie_id" />
+                <ScalarProperty Name="stan_pracy" ColumnName="stan_pracy" />
+                <ScalarProperty Name="stan_platnosci" ColumnName="stan_platnosci" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
