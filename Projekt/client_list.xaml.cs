@@ -15,15 +15,23 @@ using System.Windows.Shapes;
 namespace Projekt
 {
     /// <summary>
-    /// Logika interakcji dla klasy Window1.xaml
+    /// Logika interakcji dla klasy client_list.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class client_list : Window
     {
-        public Window1()
+        public client_list()
         {
             InitializeComponent();
 
             
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow1 = new MainWindow();
+            mainWindow1.Show();
+            this.Close();
         }
     }
 }
