@@ -23,7 +23,20 @@ namespace Projekt
         {
             InitializeComponent();
 
-            
+            Projekt_POEntities db = new Projekt_POEntities();
+            var clients = from c in db.Klienci
+                          select new
+                          {
+                              c.imie,
+                              c.naziwsko,
+                              c.telefon,
+                              c.adres,
+                              c.kod_pocztowy
+                          };
+
+            this.clients.ItemsSource = clients.ToList();
+
+
 
         }
 

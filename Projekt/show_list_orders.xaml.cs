@@ -22,8 +22,15 @@ namespace Projekt
         public show_list_orders()
         {
             InitializeComponent();
+            Projekt_POEntities db = new Projekt_POEntities();
+            var table = from z in db.Zamowienie_Klienci select new
+                        {
+                z.stan_platnosci, z.stan_pracy,
+                z.klient_id, z.zamowienie_id
+            };
 
-            
+            this.table.ItemsSource = table.ToList();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
