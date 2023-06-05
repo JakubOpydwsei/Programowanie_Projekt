@@ -30,5 +30,10 @@ namespace Projekt
             mainWindow1.Show();
             this.Close();
         }
+
+        private void submit_client_add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
