@@ -33,6 +33,21 @@ namespace Projekt
 
         private void submit_client_add_Click(object sender, RoutedEventArgs e)
         {
+            Projekt_POEntities db = new Projekt_POEntities();
+            Klienci kilentobj = new Klienci()
+            {
+                imie = imie_dodaj.Text,
+                naziwsko = nazwisko_dodaj.Text,
+                telefon = int.Parse(nr_telefonu_dodaj.Text),
+                kod_pocztowy = kod_pocztowy_dodaj.Text,
+                adres = adres_dodaj.Text
+            };
+            db.Klienci.Add(kilentobj);
+            db.SaveChanges();
+
+            client_list client_List1 = new client_list();
+            client_List1.Show();
+            this.Close();
 
         }
     }

@@ -18,6 +18,7 @@
         <Label x:Name="adres" Content="adres :" HorizontalAlignment="Left" Margin="39,163,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right"/>
         <TextBox x:Name="kod_pocztowy_dodaj" HorizontalAlignment="Left" Margin="144,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Height="26"/>
         <TextBox x:Name="adres_dodaj" HorizontalAlignment="Left" Margin="144,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Height="26" Cursor="AppStarting"/>
+        <Button x:Name="submit_client_add" Content="Dodaj nowego klienta" HorizontalAlignment="Left" Margin="400,88,0,0" VerticalAlignment="Top" Height="44" Click="submit_client_add_Click"/>
 
     </Grid>
 </Window>
