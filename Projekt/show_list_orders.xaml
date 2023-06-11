@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d"
-        Title="show_list_orders" Height="450" Width="800">
+        Title="Lista zamówień" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="table" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <DataGrid x:Name="table" d:ItemsSource="{d:SampleData ItemCount=5}" />
         <Button Content="Powrót" HorizontalAlignment="Left" Margin="417,217,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-
+        
     </Grid>
 </Window>

@@ -39,5 +39,9 @@ namespace Projekt
             mainWindow1.Show();
             this.Close();
         }
+
+        
+
+        
     }
 }
