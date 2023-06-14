@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="client_list" Height="450" Width="800">
     <Grid>
-        
+
         <DataGrid x:Name="clients" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Button Content="Powrót" HorizontalAlignment="Left" Margin="376,217,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Powrót" HorizontalAlignment="Center" Margin="0,323,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
 </Window>

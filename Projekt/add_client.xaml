@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="add_client" Height="450" Width="800">
     <Grid>
-        <Button Content="Powrót" HorizontalAlignment="Left" Margin="400,217,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Powrót" HorizontalAlignment="Center" Margin="0,323,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <TextBox x:Name="imie_dodaj" HorizontalAlignment="Left" Margin="144,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="110"/>
         <Label x:Name="imie" Content="Imię :" HorizontalAlignment="Left" Margin="39,41,0,0" VerticalAlignment="Top" Width="100" Height="24" HorizontalContentAlignment="Right"/>
         <Label x:Name="nazwisko" Content="Nazwisko :" HorizontalAlignment="Left" Margin="39,70,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right"/>
@@ -18,7 +18,7 @@
         <Label x:Name="adres" Content="adres :" HorizontalAlignment="Left" Margin="39,163,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right"/>
         <TextBox x:Name="kod_pocztowy_dodaj" HorizontalAlignment="Left" Margin="144,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Height="26"/>
         <TextBox x:Name="adres_dodaj" HorizontalAlignment="Left" Margin="144,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Height="26" Cursor="AppStarting"/>
-        <Button x:Name="submit_client_add" Content="Dodaj nowego klienta" HorizontalAlignment="Left" Margin="400,88,0,0" VerticalAlignment="Top" Height="44" Click="submit_client_add_Click"/>
+        <Button x:Name="submit_client_add" Content="Dodaj nowego klienta" HorizontalAlignment="Left" Margin="280,97,0,0" VerticalAlignment="Top" Height="44" Click="submit_client_add_Click"/>
 
     </Grid>
 </Window>

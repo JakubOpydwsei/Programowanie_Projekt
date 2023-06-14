@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="add_order" Height="450" Width="800">
     <Grid>
-        <Button Content="Powrót" HorizontalAlignment="Left" Margin="417,318,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Powrót" HorizontalAlignment="Center" Margin="0,323,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <TextBox x:Name="klient_id_update" HorizontalAlignment="Left" Margin="144,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="110"/>
         <Label x:Name="client_id" Content="Id klienta :" HorizontalAlignment="Left" Margin="39,41,0,0" VerticalAlignment="Top" Width="100" Height="24" HorizontalContentAlignment="Right"/>
         <Label x:Name="zmowienie_id" HorizontalAlignment="Left" Margin="39,70,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Content="Id zamowienia :"/>
@@ -16,6 +16,6 @@
         <TextBox x:Name="stan_pracy_update" HorizontalAlignment="Left" Margin="144,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Height="26" Text="nierozpoczete"/>
         <Label x:Name="stan_platnosci" Content="Stan płatności :" HorizontalAlignment="Left" Margin="39,132,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right"/>
         <TextBox x:Name="stan_platnosci_update" HorizontalAlignment="Left" Margin="144,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Height="26" Text="nieoplacono"/>
-        <Button x:Name="dodaj_nowe_zamowienie" Content="Dodaj nowe zamówienie" HorizontalAlignment="Left" Margin="306,79,0,0" VerticalAlignment="Top" Height="44" Click="submit_add_new_order"/>
+        <Button x:Name="dodaj_nowe_zamowienie" Content="Dodaj nowe zamówienie" HorizontalAlignment="Left" Margin="287,83,0,0" VerticalAlignment="Top" Height="44" Click="submit_add_new_order"/>
     </Grid>
 </Window>

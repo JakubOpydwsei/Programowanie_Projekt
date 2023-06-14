@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Lista Klientów" HorizontalAlignment="Left" Margin="40,40,0,0" VerticalAlignment="Top" Height="50" Width="180" Background="#FFD43939" Click="show_list_clients"/>
-        <Button Content="Dodaj Klienta" HorizontalAlignment="Left" Margin="350,40,0,0" VerticalAlignment="Top" Height="50" Width="180" Background="#FFD43939" Click="add_client"/>
-        <Button Content="Lista zamówień" HorizontalAlignment="Left" Margin="40,150,0,0" VerticalAlignment="Top" Height="50" Width="180" Background="#FFD43939" Click="show_list_orders"/>
-        <Button Content="Dodaj zamówienie" HorizontalAlignment="Left" Margin="350,150,0,0" VerticalAlignment="Top" Height="50" Width="180" Background="#FFD43939" Click="add_order"/>
+        <Button Content="Lista Klientów" HorizontalAlignment="Left" Margin="152,78,0,0" VerticalAlignment="Top" Height="79" Width="185" Background="#FFB4E1FF" Click="show_list_clients"/>
+        <Button Content="Dodaj Klienta" HorizontalAlignment="Left" Margin="469,78,0,0" VerticalAlignment="Top" Height="79" Width="184" Background="#FFB4E1FF" Click="add_client"/>
+        <Button Content="Lista zamówień" HorizontalAlignment="Left" Margin="152,251,0,0" VerticalAlignment="Top" Height="79" Width="185" Background="#FFB4E1FF" Click="show_list_orders"/>
+        <Button Content="Dodaj zamówienie" HorizontalAlignment="Left" Margin="469,251,0,0" VerticalAlignment="Top" Height="79" Width="184" Background="#FFB4E1FF" Click="add_order"/>
 
     </Grid>
 </Window>
